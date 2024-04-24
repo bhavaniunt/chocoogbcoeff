@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chocolate Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+        }
+        header, footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+        }
+        nav {
+            margin: 10px 0;
+            text-align: center;
+        }
+        nav button {
+            margin: 0 10px;
+            padding: 10px 20px;
+        }
+        .product {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px;
+            background: #fff;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chocolate Store</h1>
+    </header>
+    <nav>
+        <button onclick="alert('Home')">Home</button>
+        <button onclick="alert('Cart')">Cart</button>
+        <button onclick="alert('Contact')">Contact</button>
+    </nav>
+    <div id="products">
+        <!-- Products will be added here by JavaScript -->
+    </div>
+    <footer>
+        &copy; 2022 Chocolate Store
+    </footer>
+    <script>
+        var cart = [];
+        var products = [
+            { name: 'Dark Chocolate', price: 10 },
+            { name: 'Milk Chocolate', price: 8 },
+            { name: 'White Chocolate', price: 9 }
+        ];
+
+        function addToCart(index) {
+            cart.push(products[index]);
+            alert(products[index].name + ' added to cart. Total items: ' + cart.length);
+        }
+
+        var productsDiv = document.getElementById('products');
+        for (var i = 0; i < products.length; i++) {
+            var productDiv = document.createElement('div');
+            productDiv.className = 'product';
+            productDiv.innerHTML = '<h2>' + products[i].name + '</h2><p>$' + products[i].price + '</p><button onclick="addToCart(' + i + ')">Add to Cart</button>';
+            productsDiv.appendChild(productDiv);
+        }
+    </script>
+</body>
+</html>
